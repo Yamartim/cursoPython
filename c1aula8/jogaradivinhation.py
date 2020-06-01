@@ -1,6 +1,7 @@
+import random						#importando a biblioteca (modulo), equivalente ao define ou include no c 
+
 def play():
 
-	import random						#importando a biblioteca (modulo), equivalente ao define ou include no c 
 	#import c1aula2a7                   #nao deu pra importar...
 	
 	vidas = 0
@@ -22,10 +23,6 @@ def play():
 		vidas = 10
 	else:
 		vidas = 5
-		
-
-
-
 
 	num_secreto = random.randrange(1, 101)  #gera numero de 1 a 100
 	#random da um valor float de 0 a 1, entao multiplicamos por 100 e arredondamos
@@ -78,4 +75,7 @@ def play():
 	print("	o numero secreto era", num_secreto)
 	print("	sua pontuação final foi", pontos)
 
+if(__name__ == __main__):
+	play()
+#esse if faz com que se eu executar esse arquivo sozinho ao inves de ter ele importado ele roda tambem
 
