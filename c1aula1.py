@@ -21,4 +21,3 @@ print(type(pais))
 
 
 
-

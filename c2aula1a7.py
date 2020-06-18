@@ -56,26 +56,26 @@ def iniciar_gameloop(pal, acert):
     gan = False
     per = False
     erros = 0
-	
+
     desenhar_forca(0)
     print(acert)
-	
+
 	#enquanto o jogador nao perder e nao acertar a palavra o jogo continua....
 	# while(not perdeu and not acertou): #todas as palavras chave em python são em letra minuscula, True e False são excessões pois são valores
     while(not (per or gan)):          #demorgan gang lmao
         print("continuando game loop...")
-		
+
         guess = parse_chute()
         
         if(guess in pal):
             validar_tentativa(acert, pal, guess)
         else:
             erros+=1
-    		
-		
+
+
         desenhar_forca(erros)
         print(acert)
-		
+
         per = erros >= 6
         gan = '_' not in acert
     
@@ -137,16 +137,15 @@ def validar_tentativa(alvo, string, char):
 def terminar_jogo(gan, per):
     print("GAME OVER")
     print()
-	
+
     if(per):
-	    print('OMAE WA MOU SHINDEIRU')
+        print('OMAE WA MOU SHINDEIRU')
     elif(gan):
-	    print('parabains shinji')
+        print('parabains shinji')
     else:
-	    print('wtf voce quebrou meu codigo porra!')
-	    
-    
-	
+        print('wtf voce quebrou meu codigo porra!')
+
+
 if(__name__ == '__main__'):
 	play()
 

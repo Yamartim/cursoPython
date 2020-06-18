@@ -75,7 +75,7 @@ def play():
 	print("	o numero secreto era", num_secreto)
 	print("	sua pontuação final foi", pontos)
 
-if(__name__ == __main__):
+if(__name__ == '__main__'):
 	play()
 #esse if faz com que se eu executar esse arquivo sozinho ao inves de ter ele importado ele roda tambem
 

@@ -1,5 +1,6 @@
 import jogaradivinhation
 import jogarforca
+#from .. import c2aula1a7 #funcionaria se fosse um "package"
 
 def letsplay():
 	print("7#@--------------------------------@#7")
@@ -13,6 +14,7 @@ def letsplay():
 
 	if(select == 0):
 		jogarforca.play()
+		#c2aula1a7.play()
 	elif(select == 1):
 		jogaradivinhation.play()
 	else:
@@ -20,5 +22,5 @@ def letsplay():
 		
 	print()
 
-if(__name__ == __main__):
-	play()
+if(__name__ == '__main__'):
+	letsplay()
