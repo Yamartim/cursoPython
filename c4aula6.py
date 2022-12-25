@@ -59,4 +59,6 @@ obj_c.numero_fav() # 10
 
 print(obj_a) # printa o endereço da memoria
 print(obj_c) # printa a string q foi definida na Primo com o atributo da Mae
-
+# da pra usar classes simples como a Primo pra "decorar" outras classes com pequenas funcionalidades especificas
+# o nome disso é MIXIN
+# como é feito só pra decorar e depende de outros objetos, n é pra instanciar um obj dela
