@@ -132,10 +132,13 @@ PYTHON DATA MODEL
 '''
 
 '''
-Classes abstratas
+    Classes abstratas
 
 from abc import ABC 
 from collections.abc import MutableSequence
+
+class ListaMutavel(MutableSequence):
+    pass
 
     abc = abstract base classes
     da pra fazer classe abstrata na mao no python mas é gambiarra, melhor importar dessa biblioteca
