@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Student Profile</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/reset.css') }}">
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/formtest.css') }}">
+
+    
+    </head>
+  <body style="background-color: plum">
+
+    <header>
+
+      <!-- <img src="img/me_v2.jpg" width="64" height="64"> -->
+      <img src="{{url_for('static', filename='me_v2.jpg')}}" width="64" height="64">
+
+
+      <h2>Small student profile page</h2>
+      <h3>For an HTML assignment</h3>
+    </header>
+
+    <main>
+      <div id="basic-info">
+        <ul>
+          <li>Martim Lima</li>
+          <li>São Carlos</li>
+          <li class="sublista">Hobbies and tastes:</li>
+          <ul class="sublista">
+            <li>Playing Video Games</li>
+            <li>Making Video Games</li>
+            <li>Cooking and eating japanese food</li>
+            <li>Japanese pop culture</li>
+            <li>Listening to the Nerdcast</li>
+            <li>Building computers</li>
+            <li>Programming</li>
+            <li>Tabletop RPGs</li>
+            <li>Watching very long video essays</li>
+            <li>Complaining on Twitter</li>
+          </ul>
+          <li class="sublista">Favorite things:</li>
+          <ol class="sublista" reversed type="I" >
+            <li>Python3</li>
+            <li>Rainy vibes</li>
+            <li>inside <i>by Bo Burnam</i></li>
+            <li>Outer Wilds</li>
+            <li>Udon soup</li>
+          </ol>
+        </ul>
+      </div>
+
+      <div id="schedule" style="background-color: white">
+        <h4>My classes schedule for this semester:</h4>
+        <table border=4>
+          <tr>
+            <td>Courses</td>
+            <td><b>Formal Languages and Automatons</b></td>
+            <td><b>Scientific Methodology</b></td>
+            <td><b>Linear Algebra</b></td>
+            <td><b>Computer Networking</b></td>
+            <td><b>Web Software Development</b></td>
+          </tr>
+          <tr>
+            <td><b>weekdays</b></td>
+            <td>Mondays</td>
+            <td>Tuesdays</td>
+            <td>Tuesdays & Thursdays</td>
+            <td>Fridays</td>
+            <td>Fridays</td>
+          </tr>
+          <tr>
+            <td><b>Place</b></td>
+            <td>AT5</td>
+            <td>AT9</td>
+            <td>AT5</td>
+            <td>Department of Computation</td>
+            <td>Department of Computation</td>
+          </tr>
+          <tr>
+            <td><b>Professor</b></td>
+            <td>Zorzo</td>
+            <td>Heloisa</td>
+            <td>Nazareno</td>
+            <td>Matias</td>
+            <td>Alan</td>
+          </tr>
+          <tr>
+            <td><b>Prerequisite</b></td>
+            <td>MD</td>
+            <td>none</td>
+            <td>GA</td>
+            <td>SO</td>
+            <td>BD</td>
+          </tr>
+        </table>
+
+      </div>
+    </main>
+
+    <footer>
+
+      <h2>Reach out to me!</h2>
+      <form action="{{ url_for('formtocsv') }}" method="POST">
+    
+        <label>Name</label><br>
+        <input type="text" maxlength=25 name="nome">
+        
+        <br><br><br>
+        
+        <label>Caixa de mensagem</label><br>
+        <textarea name="textarea" rows="10" cols="50" placeholder="escreva algo"></textarea>
+        
+        <br><br><br>
+        
+        <label>Categoria</label><br>
+        <select name="categoria">
+          <option value="terror">Terror</option>
+          <option value="aventura">Aventura</option>
+          <option value="suspense">Suspense</option>
+        </select>
+    
+        <br><br><br>
+        
+        <input type="checkbox" name="noticia" value="esporte" checked>Esporte
+        <input type="checkbox" name="noticia" value="politica">Política
+        <input type="checkbox" name="noticia" value="cozinha">Cozinha
+        
+        <br><br><br>
+        
+        <input type="radio" name="disciplina" value="historia" checked>História
+        <input type="radio" name="disciplina" value="geografia">Geografia
+        <input type="radio" name="disciplina" value="matematica">Matemática
+        
+        <br><br><br>
+        
+        <input type="radio" name="disciplina" value="historia">História
+        <input type="radio" name="disciplina" value="geografia">Geografia
+        
+        <br><br><br>
+        
+        <input type="submit" value="Cadastrar">
+      </form>
+
+      <h2>Links:</h2>
+
+      <a href="https://github.com/Yamartim">GitHub</a> <br>
+      <a href="https://www.linkedin.com/in/martim-fernandes-ribeiro-lima-bba715193/">Linkedin</a> <br>
+      <a href="https://twitter.com/YamazakeWS">Twitter</a> <br>
+      <a href="https://yamartim.itch.io/">Itch</a> <br>
+
+      <br>
+
+      <a href="https://steamcommunity.com/id/Yamazake/">Steam</a> <br>
+      <a href="https://myanimelist.net/profile/Yamazake">MAL</a> <br>
+    </footer>
+
+  </body>
+</html>
