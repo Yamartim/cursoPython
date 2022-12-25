@@ -9,7 +9,7 @@ class Programa:
     #getters e setters
     @property
     def nome(self):
-        return self.__nome
+        return self._nome
 
     @nome.setter
     def nome(self, nome:str):
@@ -21,6 +21,12 @@ class Programa:
 
     def dar_like(self):
         self._likes += 1
+
+    #metodo "tostring()" reservado do python
+    def __str__(self) -> str:
+        return f'{self._nome} de {self.ano} tem {self._likes} likes'
+
+    #da pra usar __repr__ tambem, de representação
     
 #herdando de programa, super() representa a classe mae
 class Filme(Programa):
@@ -33,6 +39,9 @@ class Filme(Programa):
     def initial_likes(cls):
         return f'o numero inicial de likes de um filme é {cls.likes}'
 
+    def __str__(self) -> str:
+        return f'{self._nome} de {self.ano} dura {self.duracao} minutos e tem {self._likes} likes'
+
 class Anime(Programa):
     def __init__(self, nome: str, ano: int, temporadas:int) -> None:
         super().__init__(nome, ano)
@@ -42,3 +51,21 @@ class Anime(Programa):
     @staticmethod
     def weebness():
         return 'o nivel de weebness atual é ridiculo'
+    
+    def __str__(self) -> str:
+        return f'{self._nome} de {self.ano} com {self.temporadas} temporadas tem {self._likes} likes'
+
+
+totoro = Filme('tonari no totoro', 1999, 100)
+totoro.dar_like()
+totoro.dar_like()
+totoro.dar_like()
+
+mobpsycho = Anime('mob psycho 100', 2016, 3)
+mobpsycho.dar_like()
+mobpsycho.dar_like()
+
+lista = [totoro, mobpsycho]
+#polimorfismo
+for programa in lista:
+    print(programa)
