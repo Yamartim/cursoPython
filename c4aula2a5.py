@@ -1,5 +1,13 @@
+from abc import ABCMeta, abstractmethod
+from functools import total_ordering
 
-class Programa:
+# herdar ABCMeta como metaclass faz metodos abstratos funcionarem
+# fazer isso transforma a classe em abstrata, nao pode instanciar ela por si só tem que instanciar por uma filha
+
+#o decorador total_ordering faz com que tendo implementado só uma função de igualdade e uma de ordenação entre dois objetos (__eq__ e __lt__ nesse caso) todas as outras comparações como <=, >, !=, >=... sejam lógicamente determinadas, muito brabo
+
+@total_ordering
+class Programa(metaclass=ABCMeta): 
     def __init__(self, nome:str, ano:int) -> None:
         self._nome = nome.title()
         self.ano = ano
@@ -7,7 +15,8 @@ class Programa:
         # self.__<atributo> => private, 
         # self_<atributo> => protected, ideal pra herança
 
-    #getters e setters
+    # getters e setters
+    # jeito feio de acessar um atributo privado de fora da classe em python é com a função attrgettr(<nome do atributo>) (attrgettr é da biblioteca operator)
     @property
     def nome(self):
         return self._nome
@@ -29,6 +38,33 @@ class Programa:
 
     #da pra usar __repr__ tambem, de representação
     #metodos com __ antes e depois se chamam magic ou dunder methods (Double UNDERscore)
+
+    # mais um dunder brabo: __lt__ de "lesser than" pra fazer comparações > e <
+    # bem util pra dar sort em listas de objetos
+    # nao exte um "greater than" pq seria so oposto do lt big brain
+    # isso chama "ordenação natural de objetos"
+    def __lt__(self, __o: object) -> bool:
+        if isinstance(__o, Programa):
+            if self._likes != __o._likes:
+                return self._likes < __o._likes 
+            elif self.ano != __o.ano:
+                return self.ano < __o.ano
+            else:
+                return self._nome < __o._nome
+            # assim ficam ordenados em likes, e se o numero de likes for igual, compara ano de lançamento, se for o mesmo, ordem alfabetica
+        else:
+            return False
+
+    def __eq__(self, __o: object) -> bool:
+        if isinstance(__o, Programa):
+            return self._nome != __o._nome
+        return False
+
+    @abstractmethod
+    def abstratinho(self):
+        pass
+
+
     
 #herdando de programa, super() representa a classe mae
 class Filme(Programa):
@@ -44,6 +80,9 @@ class Filme(Programa):
     def __str__(self) -> str:
         return f'{self._nome} de {self.ano} dura {self.duracao} minutos e tem {self._likes} likes'
 
+    def abstratinho(self):
+        print('yooo estou implementado no filma')
+
 class Anime(Programa):
     def __init__(self, nome: str, ano: int, temporadas:int) -> None:
         super().__init__(nome, ano)
@@ -56,6 +95,11 @@ class Anime(Programa):
     
     def __str__(self) -> str:
         return f'{self._nome} de {self.ano} com {self.temporadas} temporadas tem {self._likes} likes'
+
+    # implementação do metodo abstrato é forçado pelo ABCMeta, se nao fizer da erro
+    def abstratinho(self):
+        print('yooo estou implementado no no anime')
+
 
 
 totoro = Filme('tonari no totoro', 1999, 100)
@@ -92,7 +136,8 @@ class Playlist():
         return self.__lista
 
     #só definir isso aqui ja transforma o obj em iteravel com indice, in...
-    #nome disso é duck typing
+    #nome disso é duck typing: 
+    #   "não importa se é um pato e sim se se comporta como pato"
     def __getitem__(self, item): 
         return self.__lista[item]
     
@@ -155,3 +200,6 @@ class Programa(metaclass = ABCMeta):
 
 assim o metodo __str__ precisa ser obrigatoriamente implementado
 '''
+
+totoro.abstratinho()
+mobpsycho.abstratinho()

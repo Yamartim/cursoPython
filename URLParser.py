@@ -37,13 +37,19 @@ class URLParser:
         return self.__url_param
 
     def __str__(self) -> str:
-        return '| ' + self.__url + '\n| Base: ' + self.__url_base + '\n| Params: ' + self.__url_param + '\n| Chaves: ' + str(self.keys()) + '\n| Valores: ' + str(self.values())
+        return f'''| {self.__url}
+| Base: {self.__url_base}
+| Params: {self.__url_param}
+| Chaves: {self.keys()}
+| Valores: {self.values()}'''
 
     def __len__(self):
         return len(self.url)
 
+    # __o convenção pra "outro objeto" i guess
     def __eq__(self, __o: object) -> bool: 
-        if type(__o) == URLParser:
+        # if type(__o) == URLParser: # leva em conta só a mesma classe
+        if isinstance(__o, URLParser): # considera classes filhas como iguais tb
             return self.url == __o.url
         else:
             return False
