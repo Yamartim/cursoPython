@@ -1,0 +1,7 @@
+[run]
+source = ./c9tdd
+
+[report]
+exclude_lines =
+    def __str__
+    def test_sus
