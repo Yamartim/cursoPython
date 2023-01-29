@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Jogoteca</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/bootstrap.css') }}">
+    {# essa função pega o arquivo nao importa quantas subpastas dentro de static ele esteja, minimiza o codigo em projetos complextos #}
+  </head>
+  <body>
+    <div class="container">
+
+        {# armazena as mensagens da função flash na variavel e roda... #}
+        {% with messages = get_flashed_messages() %}
+            {% if messages %} {# se tem mensagens cria uma ul pra mostrar elas #}
+                <ul id="messages" class="list-unstyled">
+                {% for message in messages %} {# para cada mensagem uma li mostrando ela#}
+                    <li class="alert alert-success">{{ message }}</li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+
+        <div class="page-header">
+            <h1>{{ titulo }}</h1>
+        </div>
+
+        {# assim podemos juntar modulos html a esse template #}
+        {% block conteudo %}{% endblock %}
+
+    </div>
+</body>
+</html>

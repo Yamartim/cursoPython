@@ -2,3 +2,5 @@ validate_docbr
 requests
 pytest
 pytest-cov
+flask
+mysqlclient

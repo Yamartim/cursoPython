@@ -130,3 +130,5 @@ dmypy.json
 .vs/slnx.sqlite
 .vs/VSWorkspaceState.json
 .vs/cursoPython/v16/.suo
+
+dados.csv
